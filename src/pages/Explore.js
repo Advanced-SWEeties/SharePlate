@@ -1,13 +1,10 @@
 import React from 'react'
-import { Typography, Button, Stack} from '@mui/material'
+import { Typography, Stack} from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { mockKitchens } from '../functions/mock'
 import KitchenCard from '../components/KitchenCard';
 
 const Explore = (props) => {
-  const { loggedIn } = props
-  const navigate = useNavigate()
-
   return (
     <Stack
       direction="column"

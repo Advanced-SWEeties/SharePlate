@@ -21,10 +21,6 @@ function Navbar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate();  // Initialize useNavigate hook
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -37,13 +33,13 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const handleLoginClick = () => {
-    if (!loggedIn) {
-      navigate('/login');
-    } else {
-      logOut();
-    }
-  };
+  // const handleLoginClick = () => {
+  //   if (!loggedIn) {
+  //     navigate('/login');
+  //   } else {
+  //     logOut();
+  //   }
+  // };
 
   const handlePageNavigation = (page) => {
     // Navigate to the appropriate page based on the button clicked
@@ -159,11 +155,11 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem key="login-action" onClick={handleLoginClick}>
+              {/* <MenuItem key="login-action" onClick={handleLoginClick}>
                 <Typography sx={{ textAlign: 'center' }}>
                   {loggedIn ? 'Log out' : 'Log in'}
                 </Typography>
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
           </Box>
         </Toolbar>
