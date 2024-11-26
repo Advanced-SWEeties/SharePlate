@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Typography, Button, Stack, TextField, Box } from '@mui/material';
 import { useUser } from '../context/UserContext'
 
-const Login = (props) => {
+const Signup = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -41,7 +41,7 @@ const Login = (props) => {
     await auth.login();
 
 
-    navigate('/home'); // Redirect to home or dashboard
+    navigate('/'); // Redirect to home or dashboard
   };
 
   return (
@@ -58,7 +58,7 @@ const Login = (props) => {
     >
       <Box sx={{ width: '100%', maxWidth: 400, padding: 4, borderRadius: 2, boxShadow: 3, backgroundColor: 'white' }}>
         <Typography variant="h5" sx={{ marginBottom: 2, fontWeight: 600 }}>
-          Sign In
+          Signup
         </Typography>
 
         <TextField
@@ -97,14 +97,14 @@ const Login = (props) => {
             '&:hover': { backgroundColor: '#1976d2' },
           }}
         >
-          Log in
+          Signup
         </Button>
         
         <Box sx={{ marginTop: 2 }}>
           <Typography variant="body2" color="textSecondary">
-            Don't have an account?{' '}
-            <Button color="primary" onClick={() => navigate('/signup')}>
-              Sign Up
+            Already have an account?{' '}
+            <Button color="primary" onClick={() => navigate('/login')}>
+              Login
             </Button>
           </Typography>
         </Box>
@@ -113,6 +113,5 @@ const Login = (props) => {
   );
 };
 
-export default Login;
-// src/utils/auth.js
+export default Signup;
 

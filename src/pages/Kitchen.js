@@ -7,7 +7,7 @@ import { commaParse } from '../functions/string';
 const Kitchen = () => {
   const location = useLocation();
   const kitchen = location.state?.kitchen;
-  const [rating, setRating] = useState(kitchen.rating);
+  const [rating, setRating] = useState(0);
 
   const handleSetRating = async (newRating) => {
     setRating(newRating);
@@ -19,6 +19,7 @@ const Kitchen = () => {
   };
 
   if (!kitchen) {
+    console.log("in here")
     return (
       <Typography variant="h6">
         No kitchen data found. Please return to the Explore page.

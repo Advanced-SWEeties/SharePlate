@@ -5,9 +5,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import SearchLocationInput from '../components/SearchLocationInput';
 
 const Reccomendations = () => {
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [time, setTime] = useState(dayjs());
 
@@ -23,7 +24,7 @@ const Reccomendations = () => {
   };
 
   const handleSubmit = () => {
-    console.log('Location:', location);
+    console.log('Location:', location.address);
     console.log('Disability Status:', selectedStatus);
     console.log('Time:', time?.format('HH:mm'));
   };
@@ -43,13 +44,7 @@ const Reccomendations = () => {
             </Typography>
 
             {/* Location Input */}
-            <TextField
-              label="Enter Location"
-              variant="outlined"
-              fullWidth
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
+            <SearchLocationInput setSelectedLocation={setLocation} label="Enter Location" />
 
             {/* Disability Status */}
             <Stack spacing={1}>
@@ -91,7 +86,7 @@ const Reccomendations = () => {
       {/* Preview Card */}
       <Card
         sx={{
-          flex: 1,
+          flex: 0.5,
           backgroundColor: '#212121', // Dark background
           borderRadius: 3,
           boxShadow: 3,
@@ -106,13 +101,13 @@ const Reccomendations = () => {
             </Typography>
 
             {/* Location */}
-            <Stack spacing={1} direction="row" justifyContent="space-between" alignItems="center">
+            <Stack spacing={0} direction="column">
               <Typography variant="body1">
                 <strong>Location:</strong>
               </Typography>
               {location ? (
                 <Chip
-                  label={location}
+                  label={location.address}
                   color="primary"
                   sx={{
                     color: '#ffffff',
@@ -127,7 +122,7 @@ const Reccomendations = () => {
             </Stack>
 
             {/* Disability Status */}
-            <Stack spacing={1} direction="row" justifyContent="space-between" alignItems="center">
+            <Stack spacing={0} direction="column">
               <Typography variant="body1">
                 <strong>Disability Status:</strong>
               </Typography>
@@ -148,7 +143,7 @@ const Reccomendations = () => {
             </Stack>
 
             {/* Time */}
-            <Stack spacing={1} direction="row" justifyContent="space-between" alignItems="center">
+            <Stack spacing={0} direction="column">
               <Typography variant="body1">
                 <strong>Time:</strong>
               </Typography>
@@ -169,7 +164,6 @@ const Reccomendations = () => {
             </Stack>
           </Stack>
         </CardContent>
-
 
         {/* Circular Submit Button */}
         <Fab

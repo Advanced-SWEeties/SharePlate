@@ -5,21 +5,22 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container'; 
+import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-// import { useUser } from './context/UserContext';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useUser } from './context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
-const pages = ['Explore', 'Nearby', 'AI Reccomendations'];
+const pages = ['Explore', 'Nearby', 'AI Recommendations'];
 
 function Navbar() {
-  // const { loggedIn, logOut } = useUser();  // Use the UserContext to get login state and logOut function
+  const { loggedIn, logOut } = useUser(); // Use the UserContext to get login state and logOut function
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const navigate = useNavigate();  // Initialize useNavigate hook
+  const [selectedTab, setSelectedTab] = React.useState('');
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -33,27 +34,27 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  // const handleLoginClick = () => {
-  //   if (!loggedIn) {
-  //     navigate('/login');
-  //   } else {
-  //     logOut();
-  //   }
-  // };
+  const handleLoginClick = () => {
+    if (!loggedIn) {
+      navigate('/login');
+    } else {
+      logOut();
+    }
+  };
 
   const handlePageNavigation = (page) => {
-    // Navigate to the appropriate page based on the button clicked
+    setSelectedTab(page); // Set the selected tab
     if (page === 'Explore') {
       navigate('/explore');
     } else if (page === 'Nearby') {
       navigate('/nearby');
-    } else if ( page === 'AI Reccomendations') {
+    } else if (page === 'AI Recommendations') {
       navigate('/reccomendations');
     }
   };
 
   return (
-    <AppBar position="static" color="transparent" elevation={0}>
+    <AppBar position="static" sx={{ backgroundColor: '#333', boxShadow: 'none' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Logo for larger screens */}
@@ -66,8 +67,14 @@ function Navbar() {
               mr: 5,
               display: { xs: 'none', md: 'flex' },
               fontWeight: 700,
-              color: 'inherit',
+              color: '#fff',
               textDecoration: 'none',
+              letterSpacing: '1px',
+              fontSize: '1.5rem',
+              '&:hover': {
+                color: '#f50057', // Add hover effect for the logo
+                cursor: 'pointer',
+              },
             }}
           >
             SharePlate
@@ -91,7 +98,13 @@ function Navbar() {
               onClose={handleCloseNavMenu}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={() => { handlePageNavigation(page); handleCloseNavMenu(); }}>
+                <MenuItem
+                  key={page}
+                  onClick={() => {
+                    handlePageNavigation(page);
+                    handleCloseNavMenu();
+                  }}
+                >
                   <Typography sx={{ textAlign: 'center', fontWeight: 700 }}>{page}</Typography>
                 </MenuItem>
               ))}
@@ -110,7 +123,7 @@ function Navbar() {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-              color: 'inherit',
+              color: '#fff',
               textDecoration: 'none',
             }}
           >
@@ -127,9 +140,15 @@ function Navbar() {
                   my: 2,
                   display: 'block',
                   mx: 2,
+                  textTransform: 'none',
+                  color: selectedTab === page ? '#f50057' : '#fff', // Highlight active tab
+                  fontWeight: selectedTab === page ? 700 : 600,
+                  '&:hover': {
+                    color: '#f50057', // Hover effect on tab
+                  },
                 }}
               >
-                <Typography sx={{ textAlign: 'center', fontWeight: 600 }}>{page}</Typography>
+                <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
               </Button>
             ))}
           </Box>
@@ -157,11 +176,11 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {/* <MenuItem key="login-action" onClick={handleLoginClick}>
+              <MenuItem key="login-action" onClick={handleLoginClick}>
                 <Typography sx={{ textAlign: 'center' }}>
                   {loggedIn ? 'Log out' : 'Log in'}
                 </Typography>
-              </MenuItem> */}
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

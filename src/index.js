@@ -7,20 +7,18 @@ import { UserProvider } from './context/UserContext';
 import { ThemeProvider } from '@mui/material/styles'; // Move this up
 import theme from './theme'; // Move this up as well
 import CssBaseline from '@mui/material/CssBaseline';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <UserProvider>
-        <CssBaseline/>
-        <App />
+          <CssBaseline />
+          <App />
       </UserProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

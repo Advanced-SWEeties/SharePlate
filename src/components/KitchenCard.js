@@ -7,7 +7,7 @@ import Rating from './Rating'
 import Chip from '@mui/material/Chip'
 const KitchenCard = ({ kitchen }) => {
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ width: 275, height: 200 }}>
       <CardContent>
         <Stack alignItems="center" >
           {/* Align the entire content to the center */}
