@@ -5,7 +5,7 @@ import Explore from './pages/Explore'
 import './App.css'
 import Layout from './Layout'
 import Kitchen from './pages/Kitchen'
-import AiComponent from './components/AiComponent'
+import Reccomendations from './pages/Reccomendations'
 function App() {
   return (
     <div className="App">
@@ -19,7 +19,7 @@ function App() {
           {/* <Route path="/login" element={<Login/>}> </Route> */}
           <Route path="/explore" element={<Explore/>}> </Route>
           <Route path="/kitchen/:kitchenId" element={<Kitchen/>}/>
-          <Route path="/reccomendations" element={<AiComponent/>}/>
+          <Route path="/reccomendations" element={<Reccomendations/>}/>
         </Routes>
       </Layout>
       </BrowserRouter>

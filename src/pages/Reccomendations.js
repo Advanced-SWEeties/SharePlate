@@ -6,7 +6,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-const AiComponent = () => {
+const Reccomendations = () => {
   const [location, setLocation] = useState('');
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [time, setTime] = useState(dayjs());
@@ -188,4 +188,4 @@ const AiComponent = () => {
   );
 };
 
-export default AiComponent;
+export default Reccomendations;
