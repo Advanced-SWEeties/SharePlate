@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState } from 'react'
 import { Typography, Stack} from '@mui/material'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { mockKitchens } from '../functions/mock'
 import KitchenCard from '../components/KitchenCard';
 
 const Explore = (props) => {
-  const [kitchens, setKitchens] = useState(mockKitchens);
-
+  const [kitchens, setKitchens] = useState([]);
+  setKitchens(mockKitchens);
   // IMPLEMENT THE FETCH WHICH SHOULD CHANGE
   const navigate = useNavigate()
   const handleCardClick = (kitchen) => {

@@ -10,13 +10,13 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { useUser } from './context/UserContext';
+// import { useUser } from './context/UserContext';
 import { useNavigate } from 'react-router-dom';  // Import useNavigate
 
 const pages = ['Explore', 'Nearby', 'AI Reccomendations'];
 
 function Navbar() {
-  const { loggedIn, logOut } = useUser();  // Use the UserContext to get login state and logOut function
+  // const { loggedIn, logOut } = useUser();  // Use the UserContext to get login state and logOut function
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate();  // Initialize useNavigate hook
@@ -47,7 +47,7 @@ function Navbar() {
       navigate('/explore');
     } else if (page === 'Nearby') {
       navigate('/nearby');
-    } else if ( page == 'AI Reccomendations') {
+    } else if ( page === 'AI Reccomendations') {
       navigate('/reccomendations');
     }
   };
