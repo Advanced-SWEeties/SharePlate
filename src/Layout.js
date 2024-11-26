@@ -10,8 +10,13 @@ const Layout = ({ children }) => {
     <>
       {/* Navbar */}
       <Navbar></Navbar>
-      <Container>
-        {children}
+      <Container
+        sx={{
+          padding: '2rem', // Adjust padding as needed
+          marginTop: '0.01rem', // Optional: Add margin above the container
+        }}
+      >
+          {children}
       </Container>
     </>
   )

@@ -1,5 +1,5 @@
 // Importing the apiRequest function
-import { apiRequest } from './api';
+import {apiRequest} from './api';
 import { Kitchen } from '../types/kitchen';
 
 type ApiResponse<T = any> = Promise<T>;

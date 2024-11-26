@@ -1,4 +1,12 @@
 {
+  "compilerOptions": {
+    "moduleResolution": "node", // Ensure Node module resolution is used
+    "resolveJsonModule": true,  // If you're importing JSON files
+    "allowJs": true,            // Allow importing JS files if needed
+    "esModuleInterop": true,    // Allow default imports from CommonJS modules
+    "outDir": "./dist",         // Ensure compiled files go to a separate directory
+    "declaration": true,        // Generate .d.ts files for TS files
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useUser } from './context/UserContext';
 import { useNavigate } from 'react-router-dom';  // Import useNavigate
 
-const pages = ['Explore', 'Nearby'];
+const pages = ['Explore', 'Nearby', 'AI Reccomendations'];
 
 function Navbar() {
   const { loggedIn, logOut } = useUser();  // Use the UserContext to get login state and logOut function
@@ -47,6 +47,8 @@ function Navbar() {
       navigate('/explore');
     } else if (page === 'Nearby') {
       navigate('/nearby');
+    } else if ( page == 'AI Reccomendations') {
+      navigate('/reccomendations');
     }
   };
 
