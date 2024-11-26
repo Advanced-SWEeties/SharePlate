@@ -8,13 +8,12 @@ const Explore = (props) => {
   const [kitchens, setKitchens] = useState([]);
   const navigate = useNavigate();
 
-  // Use useEffect to set the kitchens state on component mount
   useEffect(() => {
     setKitchens(mockKitchens);
-  }, [mockKitchens]); // Empty dependency array ensures this runs only once
+  }, []);
 
   const handleCardClick = (kitchen) => {
-    navigate(`/kitchen/${kitchen.kitchenId}`, { state: { kitchen } }); // Pass the kitchen object in state
+    navigate(`/kitchen/${kitchen.kitchenId}`, { state: { kitchen } });
   };
 
   return (
