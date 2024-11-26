@@ -24,10 +24,10 @@ const Login = (props) => {
       return;
     }
 
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+    if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,}$/.test(email)) {
       setEmailError('Please enter a valid email');
       return;
-    }
+    }    
 
     if ('' === password) {
       setPasswordError('Please enter a password');
