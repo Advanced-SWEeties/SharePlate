@@ -1,21 +1,98 @@
-# React + TypeScript + Vite
+# SharePlate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SharePlate is a React-based web application that helps users find and explore charity kitchens in their area. The platform provides accessibility information, operating hours, and AI-powered recommendations for users seeking food assistance services.
 
-While this project uses React, Vite supports many popular JS frameworks. [See all the supported frameworks](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+## Features
 
-## Deploy Your Own
+### 1. Kitchen Discovery
+- **Explore View**: Browse top-rated charity kitchens
+- **Nearby View**: Find kitchens close to your location
+- **AI Recommendations**: Get personalized kitchen suggestions based on:
+  - Location
+  - Disability status
+  - Preferred meal times
 
-Deploy your own Vite project with Vercel.
+### 2. Kitchen Details
+- Detailed information about each kitchen including:
+  - Operating hours
+  - Accessibility features
+  - Contact information
+  - Interactive Google Maps integration
+  - Real-time operational status
+  - Rating system
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/vite-react&template=vite-react)
+## Technical Implementation
 
-_Live Example: https://vite-react-example.vercel.app_
+### Authentication
+User authentication is implemented using JWT tokens and managed through a Context API (UserContext). The authentication flow includes:
+- Login/Signup functionality
+- Token storage in localStorage
+- Protected routes for authenticated users
+- Automatic token validation
 
-### Deploying From Your Terminal
+### APIs Integration
 
-You can deploy your new Vite project with a single command from your terminal using [Vercel CLI](https://vercel.com/download):
+1. **Google Maps Platform**
+- Places API for address autocomplete
+- Maps Embed API for kitchen location visualization
+- Geocoding API for coordinate conversion
 
-```shell
-$ vercel
-```
+2. **Backend API Integration**
+- RESTful endpoints for kitchen data
+- Authentication endpoints
+- AI recommendation system
+
+
+## Views
+
+### 1. Home View
+- Welcome page with service introduction
+- Navigation to main features
+
+### 2. Explore View (`/explore`)
+- Grid display of top-rated kitchens
+- Protected route requiring authentication
+- Kitchen cards with basic information
+
+### 3. Nearby View (`/nearby`)
+- Location-based kitchen search
+- Google Maps integration
+- Distance-based sorting
+
+### 4. AI Recommendations View (`/recommendations`)
+- Interactive form for personalized suggestions
+- Accessibility preferences
+- Time-based recommendations
+
+### 5. Kitchen Detail View (`/kitchen/:id`)
+- Comprehensive kitchen information
+- Interactive map
+- Operating hours table
+- Accessibility features list
+
+## Authentication Flow
+
+1. **Login/Signup**
+- JWT-based authentication
+- Secure token storage
+- Error handling for invalid credentials
+
+2. **Protected Routes**
+- Authentication state management via Context
+- Redirect to login for unauthorized access
+- Automatic token refresh
+
+## Environment Variables Required
+REACT_APP_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+REACT_APP_BACKEND_URL=your_backend_api_url
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:`npm install`
+3. Run a local instance: `npm run start`
+4. Either use our backend server hosted on GCloud App Engine or also start a local instance of that and update the `REACT_APP_BACKEND_URL` in the `./env`
+
+   
+
+   
