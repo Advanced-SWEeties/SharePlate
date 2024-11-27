@@ -100,6 +100,9 @@ User authentication is implemented using JWT tokens and managed through a Contex
 3. Run a local instance: `npm run start`
 4. Either use our backend server hosted on GCloud App Engine or also start a local instance of that and update the `REACT_APP_BACKEND_URL` in the `./env`
 
-   
+## Demo video
+
+https://youtu.be/x8N4Gt3RoEg?si=0iKmTKkLT0AsJWlM
+
 
    
