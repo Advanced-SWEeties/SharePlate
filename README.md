@@ -4,7 +4,7 @@ SharePlate is a React-based web application that helps users find and explore ch
 
 ## Current Status 
 
-Currently the application is fully functional with our backend service when we are running the client and and server instance locally. We have it setup so that pushes to the main branch upload and compile an instance of the application on Vercel, but because of CORS policy, the steps to full deployment and integration require us to configure a reverse proxy. 
+Currently the application is fully functional with our backend service.
 
 ## Features
 
