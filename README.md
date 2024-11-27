@@ -90,8 +90,8 @@ User authentication is implemented using JWT tokens and managed through a Contex
 - Automatic token refresh
 
 ## Environment Variables Required
-REACT_APP_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-REACT_APP_BACKEND_URL=your_backend_api_url
+1. `REACT_APP_GOOGLE_MAPS_API_KEY=your_google_maps_api_key`
+2. `REACT_APP_BACKEND_URL=your_backend_api_url`
 
 ## Getting Started
 
