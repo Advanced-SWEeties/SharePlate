@@ -2,6 +2,10 @@
 
 SharePlate is a React-based web application that helps users find and explore charity kitchens in their area. The platform provides accessibility information, operating hours, and AI-powered recommendations for users seeking food assistance services.
 
+## Current Status 
+
+Currently the application is fully functional with our backend service when we are running the client and and server instance locally. We have it setup so that pushes to the main branch upload and compile an instance of the application on Vercel, but because of CORS policy, the steps to full deployment and integration require us to configure a reverse proxy. 
+
 ## Features
 
 ### 1. Kitchen Discovery
@@ -50,21 +54,25 @@ User authentication is implemented using JWT tokens and managed through a Contex
 - Navigation to main features
 
 ### 2. Explore View (`/explore`)
+- Leverages the `api/kitchens/top-rated` endpoint in backend
 - Grid display of top-rated kitchens
 - Protected route requiring authentication
 - Kitchen cards with basic information
 
 ### 3. Nearby View (`/nearby`)
+- Leverages the `api/kitchens/nearby` endpoint in backend
 - Location-based kitchen search
 - Google Maps integration
 - Distance-based sorting
 
 ### 4. AI Recommendations View (`/recommendations`)
+- Leverages the `api/reccomendation` endpoint in backend
 - Interactive form for personalized suggestions
 - Accessibility preferences
 - Time-based recommendations
 
 ### 5. Kitchen Detail View (`/kitchen/:id`)
+- Leverages the `api/kitchens/details` endpoint in backend
 - Comprehensive kitchen information
 - Interactive map
 - Operating hours table
@@ -73,9 +81,8 @@ User authentication is implemented using JWT tokens and managed through a Contex
 ## Authentication Flow
 
 1. **Login/Signup**
-- JWT-based authentication
-- Secure token storage
-- Error handling for invalid credentials
+- Leverages `api/users/add` and `api/users/login` endpoint
+- JWT-based authentication, storing token in localStorage to reduce the amount of times a user has to log in
 
 2. **Protected Routes**
 - Authentication state management via Context
