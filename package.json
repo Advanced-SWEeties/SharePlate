@@ -48,5 +48,6 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "prettier": "^3.3.3"
-  }
+  },
+  "proxy": "https://advancedsweeties.uk.r.appspot.com"
 }

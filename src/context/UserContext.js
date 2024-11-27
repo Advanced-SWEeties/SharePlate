@@ -1,16 +1,17 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import { apiPostRequest } from '../functions/api'
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
-  
+  const [loginError, setLoginError] = useState(false);
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    const token = localStorage.getItem('token');
+    if (token) {
+      setToken(token);
       setLoggedIn(true);
     }
   }, []);
@@ -26,43 +27,36 @@ export const UserProvider = ({ children }) => {
     };
   
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-  
-      const result = await response.json();
-  
-      if (response.ok) {
-        setJwt(result);
-        return true;
+      console.log("In here")
+      const response = await apiPostRequest('users/login', data)  
+      if (response.jwt) {
+        console.log(response.jwt);
+        setJwt(response.jwt);
+        setLoggedIn(true);
+        setLoginError(false);
       } else {
-        // throw new Error(result.message || 'Login failed');
-        return false;
+        throw new Error(response|| 'Login failed');
       }
     } catch (error) {
         console.error(error.message || 'An error occurred during login.');
-        return false;
+        setLoginError(true);
     }
   };
   
   const setJwt = (jwt) => {
     localStorage.setItem('token', jwt);
-    setUser(null);
+    setToken(jwt);
     setLoggedIn(true);
   };
 
   const logOut = () => {
-    localStorage.removeItem('user');
-    setUser(null);
+    localStorage.removeItem('token');
+    setToken(null);
     setLoggedIn(false);
   };
 
   return (
-    <UserContext.Provider value={{ loggedIn, user, login, logOut }}>
+    <UserContext.Provider value={{ loggedIn, token, login, logOut, loginError }}>
       {children}
     </UserContext.Provider>
   );

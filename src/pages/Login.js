@@ -4,9 +4,9 @@ import { Typography, Button, Stack, TextField, Box } from '@mui/material';
 import { useUser } from '../context/UserContext'
 
 const Login = (props) => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
+  const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   
   const auth = useUser()
@@ -15,20 +15,11 @@ const Login = (props) => {
 
   const onButtonClick = async () => {
     // Set initial error values to empty
-    setEmailError('');
+    setUsernameError('');
     setPasswordError('');
-
-    // Check if the user has entered both fields correctly
-    if ('' === email) {
-      setEmailError('Please enter your email');
-      return;
+    if ('' === username) {
+      setUsernameError('PLease enter a username');
     }
-
-    if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,}$/.test(email)) {
-      setEmailError('Please enter a valid email');
-      return;
-    }    
-
     if ('' === password) {
       setPasswordError('Please enter a password');
       return;
@@ -38,10 +29,8 @@ const Login = (props) => {
       setPasswordError('The password must be 8 characters or longer');
       return;
     }
-    await auth.login();
-
-
-    navigate('/home'); // Redirect to home or dashboard
+    await auth.login(username, password);
+    navigate('/'); // Redirect to home or dashboard
   };
 
   return (
@@ -63,12 +52,12 @@ const Login = (props) => {
 
         <TextField
           fullWidth
-          value={email}
+          value={username}
           label="Enter your email"
-          onChange={(ev) => setEmail(ev.target.value)}
+          onChange={(ev) => setUsername(ev.target.value)}
           variant="outlined"
-          error={!!emailError}
-          helperText={emailError}
+          error={!!usernameError}
+          helperText={usernameError}
           sx={{ marginBottom: 2 }}
         />
 

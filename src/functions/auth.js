@@ -9,7 +9,7 @@ export const baseLogin = async (username, password) => {
 
   try {
     // Send POST request to login API
-    const response = await fetch('/api/users/login', {
+    const response = await fetch('users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

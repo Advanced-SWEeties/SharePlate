@@ -24,7 +24,7 @@ function App() {
           <Route path="/signup" element={<Signup/>}> </Route>          
           <Route path="/explore" element={<Explore/>}> </Route>
           <Route path="/nearby" element={<Nearby />}/>
-          <Route path="/kitchen/:kitchenId" element={<Kitchen/>}/>
+          <Route path="/kitchen/:id" element={<Kitchen/>}/>
           <Route path="/reccomendations" element={<Reccomendations/>}/>
         </Routes>
       </Layout>

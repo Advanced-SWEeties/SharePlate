@@ -6,12 +6,12 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useUser } from './context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const pages = ['Explore', 'Nearby', 'AI Recommendations'];
 
@@ -34,7 +34,7 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const handleLoginClick = () => {
+  const handleSettingsClick = () => {
     if (!loggedIn) {
       navigate('/login');
     } else {
@@ -157,7 +157,7 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="User Avatar" src="/static/images/avatar/2.jpg" />
+                <SettingsIcon/>
               </IconButton>
             </Tooltip>
             <Menu
@@ -176,7 +176,7 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem key="login-action" onClick={handleLoginClick}>
+              <MenuItem key="login-action" onClick={handleSettingsClick}>
                 <Typography sx={{ textAlign: 'center' }}>
                   {loggedIn ? 'Log out' : 'Log in'}
                 </Typography>
