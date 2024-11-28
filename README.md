@@ -105,5 +105,5 @@ User authentication is implemented using JWT tokens and managed through a Contex
 https://youtu.be/x8N4Gt3RoEg?si=0iKmTKkLT0AsJWlM
 
 # Link to the kitchen api
-[Advanced_SWEeties-]([https://github.com/Advanced-SWEeties/SharePlate](https://github.com/Advanced-SWEeties/Advanced_SWEeties-/tree/main))
+[Advanced_SWEeties-](https://github.com/Advanced-SWEeties/Advanced_SWEeties-/tree/main)
    
